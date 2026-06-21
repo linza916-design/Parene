@@ -1,9 +1,10 @@
 'use client';
 
-interface AspectRatioProps {
+import type { CSSProperties, HTMLAttributes } from 'react';
+
+interface AspectRatioProps extends HTMLAttributes<HTMLDivElement> {
   ratio?: number | string;
-  style?: Partial<CSSStyleDeclaration>;
-  [key: string]: unknown;
+  style?: CSSProperties;
 }
 
 const AspectRatio = ({ ratio = 1, style, ...props }: AspectRatioProps) => (

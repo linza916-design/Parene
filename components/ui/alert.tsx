@@ -1,10 +1,20 @@
-import * as React from 'react';
-
 import { cn } from '@/lib/utils';
 
 type AlertVariant = 'default' | 'destructive';
-type AlertProps = React.HTMLAttributes<HTMLDivElement> & {
+type AlertProps = {
+  className?: string;
   variant?: AlertVariant;
+  [key: string]: any;
+};
+
+type AlertTitleProps = {
+  className?: string;
+  [key: string]: any;
+};
+
+type AlertDescriptionProps = {
+  className?: string;
+  [key: string]: any;
 };
 
 const alertVariants = (variant: AlertVariant = 'default') =>
@@ -15,39 +25,29 @@ const alertVariants = (variant: AlertVariant = 'default') =>
       : 'bg-background text-foreground'
   );
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant, ...props }: AlertProps, ref) => (
+const Alert = ({ className, variant, ...props }: AlertProps) => (
   <div
-    ref={ref}
     role="alert"
     className={cn(alertVariants(variant), className)}
     {...props}
   />
-));
+);
 Alert.displayName = 'Alert';
 
-const AlertTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
+const AlertTitle = ({ className, ...props }: AlertTitleProps) => (
   <h5
-    ref={ref}
     className={cn('mb-1 font-medium leading-none tracking-tight', className)}
     {...props}
   />
-));
+);
 AlertTitle.displayName = 'AlertTitle';
 
-const AlertDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
+const AlertDescription = ({ className, ...props }: AlertDescriptionProps) => (
   <div
-    ref={ref}
     className={cn('text-sm [&_p]:leading-relaxed', className)}
     {...props}
   />
-));
+);
 AlertDescription.displayName = 'AlertDescription';
 
 export { Alert, AlertTitle, AlertDescription };
