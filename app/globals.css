@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background: 20 30% 98%;
+  --foreground: 20 10% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 10% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 10% 12%;
+  --primary: 15 72% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 15 50% 93%;
+  --secondary-foreground: 15 30% 30%;
+  --muted: 20 20% 95%;
+  --muted-foreground: 20 10% 50%;
+  --accent: 15 72% 65%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 20 20% 90%;
+  --input: 20 20% 92%;
+  --ring: 15 72% 65%;
+  --radius: 0.75rem;
+
+  /* PARENE Custom */
+  --coral: #E8856A;
+  --coral-light: #F4A191;
+  --coral-dark: #C96A50;
+  --peach: #FDF0EC;
+  --peach-mid: #F9D4CB;
+  --cream: #FDFAF9;
+  --warm-gray: #8B7E79;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-coral {
+    background: linear-gradient(135deg, #E8856A 0%, #F4A191 100%);
+  }
+
+  .gradient-peach {
+    background: linear-gradient(135deg, #FDF0EC 0%, #F9D4CB 100%);
+  }
+
+  .gradient-warm {
+    background: linear-gradient(135deg, #E8856A 0%, #D4A5A5 50%, #9B8EA8 100%);
+  }
+
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .card-hover {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(232, 133, 106, 0.15);
+  }
+
+  .story-ring {
+    background: linear-gradient(135deg, #E8856A, #F4A191, #FFCBA4);
+    padding: 2px;
+    border-radius: 9999px;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #F9D4CB;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8856A;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-coral {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 133, 106, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(232, 133, 106, 0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-fade-up { animation: fadeInUp 0.5s ease-out forwards; }
+.animate-slide-right { animation: slideInRight 0.4s ease-out forwards; }
+.animate-pulse-coral { animation: pulse-coral 2s infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
