@@ -1,6 +1,6 @@
-// Avoid requiring tailwindcss types to prevent TypeScript errors when they're not installed
-// @ts-expect-error: tailwindcss-animate may not have type declarations
 import animatePlugin from 'tailwindcss-animate';
+
+
 type Config = any;
 
 const config: Config = {
