@@ -85,10 +85,13 @@ export default function LoginPage() {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+              <label htmlFor="auth-email" className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
               <div className="relative">
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
+                id="auth-email" // Matches label htmlFor
+      name="email"    // Enables browser autofill
+      autoComplete="email" // Explicit hint for browsers
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
